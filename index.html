@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <!-- intro section ================================================== -->
+    <section id="intro">
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" class="video">
+            <source src="../bakvideo.mp4" type="video/mp4">
+        </video>
+        <div class="intro-overlay"></div>
+        <div class="intro-content">
+            <div class="row">
+                <div class="col-lg-12 col-md-4 col-sm-12">
+                    <p class="intro-position">
+                        <!-- <h1>Calculator</h1> -->
+                        <div class="container my-sm-3 ">
+                            <!-- Add the m-2 class for left and right margin on small screens -->
+                            <div class="calculator col-md-8 col-sm-12 col-lg-12 my-sm-3 m-2">
+                                <input type="text" placeholder="0" id="output-screen">
+                                <button onclick="Clear()">Cl</button>
+                                <button onclick="del()">DEL</button>
+                                <button onclick="display('%')">%</button>
+                                <button onclick="display('/')">/</button>
+                                <button onclick="display('7')">7</button>
+                                <button onclick="display('8')">8</button>
+                                <button onclick="display('9')">9</button>
+                                <button onclick="display('*')">*</button>
+                                <button onclick="display('4')">4</button>
+                                <button onclick="display('5')">5</button>
+                                <button onclick="display('6')">6</button>
+                                <button onclick="display('-')">-</button>
+                                <button onclick="display('1')">1</button>
+                                <button onclick="display('2')">2</button>
+                                <button onclick="display('3')">3</button>
+                                <button onclick="display('+')">+</button>
+                                <button onclick="display('.')"><b>.</b></button>
+                                <button onclick="display('0')">0</button>
+                                <button onclick="calculate()" class="equal">=</button>
+                            </div>
+                        </div>
+                    </p>
+                    <a class="button stroke smoothscroll" href="#about" title=""></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".container"), {
+            max: 25,
+            speed: 400
+        });
+
+        let outputscreen = document.getElementById("output-screen");
+
+        function display(num) {
+            outputscreen.value += num;
+        }
+
+        function calculate() {
+            try {
+                outputscreen.value = eval(outputscreen.value);
+            } catch (error) {
+                alert("Invalid");
+            }
+        }
+
+        function Clear() {
+            outputscreen.value = "";
+        }
+
+        function del() {
+            outputscreen.value = outputscreen.value.slice(0, -1);
+        }
+
+    </script>
+</body>
+
+</html>
